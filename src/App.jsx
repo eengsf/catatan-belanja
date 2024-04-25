@@ -7,19 +7,19 @@ import Footer from "./components/Footer";
 const groceryItems = [
   {
     id: 1,
-    name: 'Kopi Bubuk',
+    name: "Kopi Bubuk",
     quantity: 2,
     checked: true,
   },
   {
     id: 2,
-    name: 'Gula Pasir',
+    name: "Gula Pasir",
     quantity: 5,
     checked: false,
   },
   {
     id: 3,
-    name: 'Air Mineral',
+    name: "Air Mineral",
     quantity: 3,
     checked: false,
   },
@@ -28,15 +28,15 @@ const groceryItems = [
 export default function App() {
   const [items, setItems] = useState(groceryItems);
   function handleAddItem(item) {
-    setItems([...items, item]); //ini mengcopy items dan copy an tadi ditambah item, jadi ada 2 array
+    setItems([...items, item]);
   }
   function handleDeleteItem(id) {
     setItems((items) => items.filter((item) => item.id !== id));
   }
   function handleToggleItem(id) {
-    setItems(
-      (items) => items.map(
-        (item) => (item.id === id ? { ...item, checked: !item.checked } : item)
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
       )
     );
   }
@@ -47,12 +47,13 @@ export default function App() {
     <div className="app">
       <Header />
       <Form onAddItem={handleAddItem} />
-      <GroceryList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} onClearItems={handleClearItems} />
+      <GroceryList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+        onClearItems={handleClearItems}
+      />
       <Footer items={items} />
     </div>
   );
 }
-
-
-
-
